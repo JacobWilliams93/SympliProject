@@ -6,12 +6,12 @@
             <div class="form-group">
                 <label for="keywords">Keywords</label>
                 <input type="text" name="keywords" id="keywords" ngModel required #keywords="ngModel">
-                <p *ngIf="!keywords.valid && keywords.touched" class="validation-error">Field can't be empty!</p>
+                <p *ngIf="!keywords.valid && keywords.touched" class="validation-error"><i>Field can't be empty!</i></p>
             </div>
             <div class="form-group">
                 <label for="matchUrl">URL</label>
                 <input type="matchUrl" name="matchUrl" id="matchUrl" ngModel pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" required #matchUrl="ngModel">
-                <p *ngIf="!matchUrl.valid && matchUrl.touched" class="validation-error">Field must be a valid URL!</p>
+                <p *ngIf="!matchUrl.valid && matchUrl.touched" class="validation-error"><i>Field must be a valid URL!</i></p>
             </div>
             <div class="form-group">
                 <label for="searchEngine">Search Engine</label>

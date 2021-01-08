@@ -20,6 +20,8 @@
 .validation-error {
     margin-top: 0px;
     padding-left: 20px;
+    font-size: medium;
+    color: red;
 }
 
 .form-group label {

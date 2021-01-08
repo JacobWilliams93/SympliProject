@@ -29,9 +29,4 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  
-  it('after onSubmit searchObject should be loaded', () => {
-    
-  });
 });

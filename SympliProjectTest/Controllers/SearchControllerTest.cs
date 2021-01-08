@@ -49,6 +49,8 @@ namespace SympliProjectTest.Controllers
                 .Returns(new GoogleSearchManager());
             mockFactory.Setup(x => x.GetSearchManager(SearchManagerType.Bing))
                 .Returns(new BingSearchManager());
+            mockFactory.Setup(x => x.GetSearchManager(SearchManagerType.Invalid))
+                .Throws<ArgumentException>();
 
             return new SearchController(mockFactory.Object, cache);
         }
