@@ -1,0 +1,40 @@
+<div class="container">
+    <img src="https://www.sympli.com.au/wp-content/uploads/sympli-logo-black.svg">
+    <br>
+    <div class="form-container">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="keywords">Keywords</label>
+                <input type="text" name="keywords" id="keywords" ngModel required #keywords="ngModel">
+                <p *ngIf="!keywords.valid && keywords.touched" class="validation-error">Field can't be empty!</p>
+            </div>
+            <div class="form-group">
+                <label for="matchUrl">URL</label>
+                <input type="matchUrl" name="matchUrl" id="matchUrl" ngModel pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" required #matchUrl="ngModel">
+                <p *ngIf="!matchUrl.valid && matchUrl.touched" class="validation-error">Field must be a valid URL!</p>
+            </div>
+            <div class="form-group">
+                <label for="searchEngine">Search Engine</label>
+                <select name="searchEngine" id="searchEngine" [ngModel]="defaultEngine">
+                    <option value="Google">Google</option>
+                    <option value="Bing">Bing</option>
+                </select>
+            </div>
+            <button class="btn" type="submit" [disabled]="!f.valid">Search</button>
+        </form>
+    </div>
+    <br>
+    <div class="loading"><h3 *ngIf="loading && !error">Loading... </h3></div>
+    <div class="results-container" *ngIf="results && !loading">
+        <div class="results-content">
+            <p>Searching on {{searchObject.searchEngine}} for the keyword(s) "{{searchObject.keywords}}" returned results in the following positions:</p>
+            <p><strong>{{results}}</strong></p>
+        </div>
+    </div>
+    <div class="error-container" *ngIf="error">
+        <div class="error-content">
+            <h1>An Error Occured!</h1>
+            <p>{{error.message}}</p>
+        </div>
+    </div>
+</div>
